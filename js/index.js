@@ -4,10 +4,16 @@ alert("Hola, esta web te dará el plan de entrenamiento perfecto.\nSolicitaremos
 
 
 // primeros datos del usuario
+
+
+// nombre
 let userName = prompt("NOMBRE COMPLETO: ").toLowerCase();
 let nameParts = userName.split(' ').map(name => name.charAt(0).toUpperCase() + name.slice(1));
 let firstName = nameParts[0];
 console.log(userName)
+
+
+
 
 // edad
 let userAge = parseInt(prompt(`${firstName}, dinos tu edad por favor: `));
@@ -19,12 +25,16 @@ const ageRanges = [
     { min: 14, max: 19, label: `${userAge} años = Adolescente` }
 ];
 // Encuentra el rango de edad correspondiente
-let ageLabel = ageRanges.find(range => userAge >= range.min && userAge <= range.max)?.label || "No apto";
+let ageLabel = ageRanges.find(range => userAge >= range.min && userAge <= range.max)?.label || `${userAge} años = No apto`;
 if (ageLabel === "No apto") {
     alert(`${firstName}, esa edad no te permite entrenar, lo sentimos`);
 }
 userAge = ageLabel;
 console.log(userAge)
+
+
+
+
 
 // validacion para el género
 let userSex = parseInt(prompt(`¿${firstName}, eres hombre o mujer? \n 1 para mujer \n 2 para hombre`));
@@ -40,32 +50,42 @@ if (userSex == 1){
     }
 }
 
+
+
+
 // segundos datos del usuario
-let userWeight = parseFloat(prompt(`${firstName}, ¿Cuanto pesas actualmente? `));
-let userHeight = parseFloat(prompt(`${firstName}, ¿Cuanto mides?`));
 
-// function sobrePeso(){
-//     if(userWeight > ){
-
-
-// //     }
-// }
-function estable(){
-    
+function calcularIMC(peso, altura) {
+    return peso / ((altura / 100) * (altura / 100)); // Convertir altura a metros
 }
-function BajoPesoCorporal(){
-    
+function determinarEstadoPeso(peso, altura) {
+    let imc = calcularIMC(peso, altura);
+
+    if (imc < 18.5) {
+        return "Bajo peso";
+    } else if (imc >= 18.5 && imc < 24.9) {
+        return "Peso normal (estable)";
+    } else {
+        return "Sobrepeso";
+    }
 }
+let userWeight = parseFloat(prompt(`${firstName}, ¿Cuánto pesas actualmente? (kg)`));
+let userHeight = parseFloat(prompt(`${firstName}, ¿Cuánto mides? (cm)`));
+let estadoPeso = determinarEstadoPeso(userWeight, userHeight);
+console.log(`${firstName}, tu estado de peso es: ${estadoPeso}`);
 
 
-// switch(){
-//     case 1:
-    
-//     case 2:
 
-//     case 3:
-    
-//     default:
 
-// };
 
+
+// resumen del usuario
+const userStatus = alert([`
+    Nombre completo: ${userName}.
+    Edad: ${userAge}.
+    Sexo: ${userSex}.
+    Peso: ${userWeight} kg.
+    Altura: ${userHeight} cm.
+    Estado físico: ${estadoPeso}.
+
+`]);
