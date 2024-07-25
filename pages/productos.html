@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | ExPlanIt | Paul Ushiro | Comisión #62015</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Conexión con google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- fonts -->
+    <!-- font para titulos -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- font para parrafos -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <!-- js -->
+    <script defer type="module" src="./../js/productos.js"></script>
+    <script defer type="module" src="./../js/arrays/productos.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="./../css/productos.css">
+    <link rel="stylesheet" href="./../css/globals.css">
+</head>
+<body>
+    <header>
+        <div class="titleHeader">
+            <h1>ExPlanIt</h1>
+            <p>Tu mejor plan de entrenamiento.</p>
+        </div>
+        <nav class="navHeader">
+            <ul class="ulHeader">
+                <li><a href="./../index.html" class="LinksHeader">Inicio</a></li>
+                <li><a href="./productos.html" class="LinksHeader">Productos Fitness</a></li>
+                <li><a href="./carrito.html" class="LinksHeader">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="productsCategoriesContainer">
+            <h3>Nuestras categorias</h3>
+            <div class="productsCategories">
+                <ul class="ulCategories">
+                    <button class="categoryProductItem" id="categoryGymButton">GYM</button>
+                    <button class="categoryProductItem" id="categoryCalisteniaButton">CALISTENIA</button>
+                </ul>
+            </div>
+        </div>
+        <section class="containerProducts" id="containerProducts">
+        </section>
+    </main>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

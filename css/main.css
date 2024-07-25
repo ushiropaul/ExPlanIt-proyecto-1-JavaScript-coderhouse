@@ -1,0 +1,115 @@
+/* alert */
+.alertAgeNotPermitedDiv{
+    background-color: red;
+    padding: 1rem;
+    color: white;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+/* main */
+main{
+    background-image: url(./../img/background.webp);
+    padding: 1rem;
+}
+main #description .descriptionContainer{
+    background-color: rgba(0, 0, 0, 0.727);
+    backdrop-filter: blur(13px);
+    border-radius: 1.2rem;
+    padding: 1rem;
+    max-width: 900px;
+}
+main #description .descriptionContainer h2{
+    text-align: center;
+    color: aliceblue;
+}
+main #description .descriptionContainerDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+main #description .article1{
+    display: flex;
+    justify-content: center;
+}
+
+
+main .descriptionContainer .descriptionContainerDiv p{
+    color: white;
+    font-size: 1.2rem;
+}
+main .containerInitForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    margin: 3rem 0;
+
+}
+
+
+
+main .containerInitForm .formInputs input, select, button{
+    max-width: 300px;
+}
+main .containerInitForm .formInputs button{
+    text-align: center;
+}
+
+
+main .containerInitForm button{
+    background-color: var(--color-primary);
+    padding: .4rem;
+    border-radius: .8rem;
+    border: 3px solid var(--color-secondary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+main .containerInitForm button:hover{ 
+    background-color: var(--color-terciary);
+    transition: all .3s;
+}
+main .containerInitForm button:focus{
+    background-color: var(--color-terciary);
+    transition: all .3s;
+}
+
+
+/* form main styles */
+.formInputs{
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+/* styles for container of results and summary for the users*/
+main #containerResultsForUser{
+    background-color: aliceblue;
+
+    border: 0;
+}
+main #containerResultsForUser .userSummaryContainer{
+    border: 1px solid;
+}
+main #containerResultsForUser .userSummaryContainer h3{
+    text-align: center;
+}
+main #containerResultsForUser .userSummaryContainer ul li span{
+    text-decoration: underline var(--color-terciary);
+    font-size: 1.3rem;
+}
+/* media queries */
