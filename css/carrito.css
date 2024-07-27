@@ -1,0 +1,70 @@
+.cartTitle h2{
+    padding-top: 1rem;
+    text-align: center;
+}
+
+#cart-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.total {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button.remove {
+    background-color: red;
+    color: white;
+}
+
+button.increase,
+button.decrease {
+    background-color: blue;
+    color: white;
+}
+
+button#clear-cart,
+button#buy-cart {
+    background-color: green;
+    color: white;
+    margin-top: 10px;
+}
+
+.button-container{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}

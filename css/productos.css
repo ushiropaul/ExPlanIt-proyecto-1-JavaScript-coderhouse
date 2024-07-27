@@ -1,35 +1,10 @@
 
+
+
+
 main{
     display: flex;
     flex-direction: column;
-}
-
-.productsCategoriesContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 1rem;
-}
-
-.productsCategoriesContainer .productsCategories .ulCategories{
-    display: flex;
-    gap: .2rem;
-    flex-wrap: wrap;
-    list-style: none;
-}
-.productsCategoriesContainer .productsCategories .ulCategories button{
-    background-color: var(--color-primary);
-    border: 1px solid;
-    padding: 2px;
-}
-.productsCategoriesContainer .productsCategories .ulCategories button:hover{
-    background-color: var(--color-terciary);
-    color: white;
-
-}
-.productsCategoriesContainer .productsCategories .ulCategories button:focus{
-    background-color: var(--color-terciary);
-    color: white;
 }
 
 
@@ -37,33 +12,95 @@ main{
 
 /* product section */
 .containerProducts{
-    height: 100vh;
+    padding: 2rem;
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
-    padding: 1rem;
+    gap: 1rem;
     justify-content: center;
 }
-.containerProducts .productDiv{
-    border: 1px solid;
+.containerProducts .card{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: .5rem;
 }
-
-.containerProducts .productDiv img{
+.containerProducts .card img{
     width: 300px;
-    height: 300px;
-    object-fit: contain; 
+    height: 300px; /* Ajusta la altura según tu preferencia */
+    object-fit: contain;
+    border-radius: 4px;
 }
-.containerProducts .productDiv p{
-    font: 3rem;
+.containerProducts #calisteniaProductsContainer{
+    margin-bottom: 5rem;
+}
+.containerProducts #calisteniaProductsContainer, #gymProductsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.containerProducts .product-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+}
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+    width: 300px; /* Ajusta el ancho según tu preferencia */
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px; /* Ajusta la altura según tu preferencia */
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    margin: 0.5em 0;
+
+}
+
+.product-card p {
+    font-size: 1em;
+    color: #333;
+}
+
+.product-card .add-to-cart {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.product-card .add-to-cart:hover {
+    background-color: var(--color-terciary);
+    transition: all .3s;
 }
 
 
 
+.success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
 
 
 

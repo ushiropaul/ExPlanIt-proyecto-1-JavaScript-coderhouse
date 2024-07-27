@@ -112,4 +112,14 @@ main #containerResultsForUser .userSummaryContainer ul li span{
     text-decoration: underline var(--color-terciary);
     font-size: 1.3rem;
 }
+
+main #containerResultsForUser .planContainer{
+    background-color: antiquewhite;
+    min-height: 50cm;
+}
+
+
+
+
+
 /* media queries */
