@@ -45,7 +45,7 @@ function showSuccessMessage(message) {
 
     setTimeout(() => {
         document.body.removeChild(successMessage);
-    }, 500);
+    }, 1000);
 }
 
 createProductCard(productos);

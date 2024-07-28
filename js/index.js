@@ -1,23 +1,23 @@
-
 import { 
     PLANS_FOR_SKINNY_PEOPLE, 
     PLANS_FOR_STABLE_PEOPLE, 
     PLANS_FOR_FAT_PEOPLE 
 } from './arrays/planes.js'; 
 
-const fatOldPeoplePlan = PLANS_FOR_FAT_PEOPLE.oldpeopleplan;
-const fatAdultPeoplePlan = PLANS_FOR_FAT_PEOPLE.adultpeopleplan;
-const fatTeenagePeoplePlan = PLANS_FOR_FAT_PEOPLE.teenagepeopleplan;
+const plans = {
+    "Infrapeso severo": PLANS_FOR_SKINNY_PEOPLE,
+    "Infrapeso": PLANS_FOR_SKINNY_PEOPLE,
+    "Peso normal (estable)": PLANS_FOR_STABLE_PEOPLE,
+    "Sobrepeso": PLANS_FOR_FAT_PEOPLE,
+    "Obesidad": PLANS_FOR_FAT_PEOPLE,
+    "Obesidad mórbida": PLANS_FOR_FAT_PEOPLE
+};
 
-const stableOldPeoplePlan = PLANS_FOR_STABLE_PEOPLE.oldpeopleplan;
-const stableAdultPeoplePlan = PLANS_FOR_STABLE_PEOPLE.adultpeopleplan;
-const stableTeenagePeoplePlan = PLANS_FOR_STABLE_PEOPLE.teenagepeopleplan;
-
-const skinnyOldPeoplePlan = PLANS_FOR_SKINNY_PEOPLE.oldpeopleplan;
-const skinnyAdultPeoplePlan = PLANS_FOR_SKINNY_PEOPLE.adultpeopleplan;
-const skinnyTeenagePeoplePlan = PLANS_FOR_SKINNY_PEOPLE.teenagepeopleplan;
-
-
+const ageGroups = {
+    "Edad avanzada": 'oldpeopleplan',
+    "Adulto": 'adultpeopleplan',
+    "Adolescente": 'teenagepeopleplan'
+};
 
 // Iniciar programa
 let initFormButton = document.getElementById("initForm");
@@ -40,13 +40,11 @@ function startQuestionnaire() {
                 <option value="Adolescente">De 12 a 19 años (Adolescente)</option>
             </select>
 
-
             <label for="weightInput">Peso (kg):</label>
             <input type="number" id="weightInput" placeholder="Peso (kg)" required>
 
             <label for="heightInput">Altura (cm):</label>
             <input type="number" id="heightInput" placeholder="Altura (cm)" required>
-
 
             <label for="goalInput">Seleccioná un objetivo:</label>
             <select id="goalInput" name="Objetivos" required>
@@ -77,13 +75,6 @@ function startQuestionnaire() {
     };
 }
 
-
-
-
-
-
-
-// 
 function calculateIMC(weight, height) {
     return weight / ((height / 100) * (height / 100)); // Convertir altura a metros
 }
@@ -101,9 +92,38 @@ function determineUserStatus(weight, height) {
     return imcRanges.find(range => imc <= range.max).label;
 }
 
+function getSetsAndReps(goal) {
+    const setsAndReps = {
+        sets: 0,
+        reps: 0
+    };
 
+    switch (goal) {
+        case "Quemar grasa (alta exigencia)":
+            setsAndReps.sets = 3;
+            setsAndReps.reps = 15;
+            break;
+        case "Quemar grasa y aumentar masa muscular (alta exigencia)":
+            setsAndReps.sets = 4;
+            setsAndReps.reps = 12;
+            break;
+        case "Aumentar masa muscular (alta exigencia)":
+            setsAndReps.sets = 5;
+            setsAndReps.reps = 8;
+            break;
+        case "Solo mantenerse en movimiento (baja exigencia)":
+            setsAndReps.sets = 2;
+            setsAndReps.reps = 10;
+            break;
+        default:
+            setsAndReps.sets = 3;
+            setsAndReps.reps = 12;
+    }
 
-function createResult(userName, userAge, userGender, userWeight, userHeight, userIMC, userFreeTime, userGoal) {
+    return setsAndReps;
+}
+
+function createResult(userName, userAge, userWeight, userHeight, userIMC, userGoal) {
     let userResults = document.getElementById('containerResultsForUser');
     if (!userResults) {
         userResults = document.createElement('div');
@@ -127,24 +147,38 @@ function createResult(userName, userAge, userGender, userWeight, userHeight, use
         </ul>
     `;
 
+    let userPlanKey = ageGroups[userAge];
+    let userPlan = plans[userIMC][userPlanKey];
+    let setsAndReps = getSetsAndReps(userGoal);
 
+    let planDetails = document.createElement('div');
+    planDetails.className = 'planDetailsContainer';
+    planDetails.innerHTML = `
+        <h3>PLAN DE ENTRENAMIENTO:</h3>
+        <div>
+            ${Object.keys(userPlan).map(day => `
+                <ul>
+                    <h4>${capitalizeFirstLetter(day)}:</h4>
+                    ${Object.keys(userPlan[day]).map(exercise => `
+                        <li>${userPlan[day][exercise]}. Series: ${setsAndReps.sets}. Repeticiones: ${setsAndReps.reps}.</li>
+                    `).join('')}
+                </ul>
+            `).join('')}
+        </div>
+    `;
 
     userResults.appendChild(userSummary);
-    userResults.appendChild(userPlan);
-
+    userResults.appendChild(planDetails);
 
     const containerInitForm = document.querySelector('.containerInitForm');
     containerInitForm.innerHTML = '<button id="resetForm">Rehacer</button>';
 
     document.getElementById("resetForm").onclick = resetQuestionnaire;
-} // <-- acá termina la funcion que prepara los resultados del usuario.
+}
 
-
-
-
-
-
-
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 function resetQuestionnaire() {
     initFormButton.style.display = 'block';
@@ -159,5 +193,6 @@ function resetQuestionnaire() {
     startQuestionnaire();
 }
 
+startQuestionnaire();
 
 
