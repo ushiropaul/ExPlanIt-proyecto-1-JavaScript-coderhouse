@@ -1,4 +1,10 @@
-import { productos } from "./arrays/productos.js";
+fetch('./../json/productos.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); 
+        createProductCard(data);
+    })
+    .catch(error => console.error('Error al cargar los productos:', error));
 
 const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 const containerProducts = document.getElementById('containerProducts');
@@ -15,15 +21,15 @@ function createProductCard(productsArray) {
         `;
         containerProducts.appendChild(card);
     });
-    addToCartButton();
+    addToCartButton(productsArray);  
 }
 
-function addToCartButton() {
+function addToCartButton(productsArray) {
     const addButton = document.querySelectorAll(".productoAgregar");
     addButton.forEach(button => {
         button.onclick = (e) => {
             const productId = e.currentTarget.id;
-            const selectedProduct = productos.find(producto => producto.id == productId);
+            const selectedProduct = productsArray.find(producto => producto.id == productId);
             const existingProduct = cartProducts.find(p => p.id == productId);
             if (existingProduct) {
                 existingProduct.quantity += 1;
@@ -47,13 +53,6 @@ function showSuccessMessage(message) {
         document.body.removeChild(successMessage);
     }, 1000);
 }
-
-createProductCard(productos);
-
-
-
-
-
 
 
 

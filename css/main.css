@@ -90,7 +90,11 @@ main .containerInitForm button:focus{
     padding: 1rem;
 }
 
-
+#containerResultsForUser #resetForm{
+    padding: 1rem;
+    background-color: var(--color-primary);
+    font-size: 2rem;
+}
 
 
 
@@ -99,6 +103,9 @@ main .containerInitForm button:focus{
 /* styles for container of results and summary for the users*/
 main #containerResultsForUser{
     background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     border: 0;
 }
@@ -113,9 +120,21 @@ main #containerResultsForUser .userSummaryContainer ul li span{
     font-size: 1.3rem;
 }
 
+.titlePlanDiv{
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.titlePlanDiv h3{
+    text-align: center;
+}
+
 main #containerResultsForUser .planContainer{
     background-color: antiquewhite;
-    min-height: 50cm;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 
